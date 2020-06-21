@@ -1,3 +1,13 @@
 # On-screen-keyboard
-Tamil on screen keyboard
-Developed as a plug-in for Wikipedia descriptions are at https://ta.wikipedia.org/wiki/பயனர்:Neechalkaran/துடுப்புகள்/தட்டச்சு
+Tamil on screen keyboard for Tamil99 & Phonetic
+
+
+![phonetic map](https://github.com/neechalkaran/On-screen-keyboard/blob/master/phonetic map.jpg?raw=true)
+![Tamil99 Map](https://github.com/neechalkaran/On-screen-keyboard/blob/master/Tamil_Keyboard_Tamil_99.jpg?raw=true)
+
+# Configurations
+* To initialize the typing area. Mandatory
+  $('#wpTextbox1').focus(function (){livebox='wpTextbox1';})
+
+* To show on screen keyboard. optional
+  showkeyboard();
