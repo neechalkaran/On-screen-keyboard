@@ -1,51 +1,85 @@
-<!doctype html><br />
-<html><body><br />
-<input type="button" value="Phonetic" onclick="togglemap('phonetic')"></input>
-<input type="button" value="tamil99" onclick="togglemap('tamil99')"></input>
-<textarea id="tbox" rows="5" cols="50"  ></textarea><br />
-<textarea id="wpTextbox1" rows="5" cols="50" ></textarea><br />
-<textarea id="searchInput" rows="5" cols="50" ></textarea><br />
-<div id="wpSummaryLabel"></div>
-<br />
-
-<br />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><br />
-<script type="text/javascript">
-
-
-var livebox='wpTextbox1';
 var tran="false";
 var shiftcache="false";
 var phonetic="false";
 var tamil99="false";
-var content="<div id='keyboard' style='align:right;display:none;position:fixed;bottom:10px;right:5px;float:right;'><div id='kbheader'></div><br/><img usemap='#tamil99map' width='565' height='211' border='0' src='http://3.bp.blogspot.com/-9vDulimyepI/Uk6K3FAR3nI/AAAAAAAAAsY/OkVF5mxAiys/s1600/Tamil_Keyboard_Tamil_99.jpg'   /><map name='tamil99map'  ><area shape='rect' coords='0,0,39,41' href='javascript:void(0);' onclick='writeme([&#39;`&#39;,&#39;~&#39;,&#39;&#39;])' alt='`'><area shape='rect' coords='40,0,77.6,41' href='javascript:void(0);' onclick='writeme([&#39;1&#39;,&#39;!&#39;,&#39;&#39;])' alt='1'><area shape='rect' coords='77.6,0,115.1,41' href='javascript:void(0);' onclick='writeme([&#39;2&#39;,&#39;@&#39;,&#39;&#39;])' alt='2'><area shape='rect' coords='115.2,0,152.7,41' href='javascript:void(0);' onclick='writeme([&#39;3&#39;,&#39;#&#39;,&#39;&#39;])' alt='3'><area shape='rect' coords='152.8,0,190.3,41' href='javascript:void(0);' onclick='writeme([&#39;4&#39;,&#39;$&#39;,&#39;&#39;])' alt='4'><area shape='rect' coords='190.4,0,227.9,41' href='javascript:void(0);' onclick='writeme([&#39;5&#39;,&#39;\%&#39;,&#39;&#39;])' alt='5'><area shape='rect' coords='228,0,265.5,41' href='javascript:void(0);' onclick='writeme([&#39;6&#39;,&#39;\^&#39;,&#39;&#39;])' alt='6'><area shape='rect' coords='265.6,0,303.1,41' href='javascript:void(0);' onclick='writeme([&#39;7&#39;,&#39;\&&#39;,&#39;&#39;])' alt='7'><area shape='rect' coords='303.2,0,340.7,41' href='javascript:void(0);' onclick='writeme([&#39;8&#39;,&#39;\*&#39;,&#39;&#39;])' alt='8'><area shape='rect' coords='340.8,0,378.1,41' href='javascript:void(0);' onclick='writeme([&#39;9&#39;,&#39;\(&#39;,&#39;&#39;])' alt='9'><area shape='rect' coords='378.2,0,414.5,41' href='javascript:void(0);' onclick='writeme([&#39;0&#39;,&#39;\)&#39;,&#39;&#39;])' alt='0'><area shape='rect' coords='414.6,0,452.9,41' href='javascript:void(0);' onclick='writeme([&#39;-&#39;,&#39;\_&#39;,&#39;&#39;])' alt='-'><area shape='rect' coords='453,0,490.3,41' href='javascript:void(0);' onclick='writeme([&#39;=&#39;,&#39;\+&#39;,&#39;&#39;])' alt='='><area shape='rect' coords='490.4,0,527.7,41' href='javascript:void(0);' onclick='writeme([&#39;&#92;&#92;&#39;,&#39;&#92;&#124;&#39;,&#39;&#39;])' alt='\'><area shape='rect' coords='527.8,0,565,41' href='javascript:void(0);' onclick='writeme([&#39;←&#39;,&#39;←&#39;,&#39;←&#39;])' alt='←'><area shape='rect' coords='0,45,55.7,84' href='javascript:void(0);' onclick='writeme([&#39;\t&#39;,&#39;\t&#39;,&#39;\t&#39;])' alt='→'><area shape='rect' coords='55.8,45,93.2,84' href='javascript:void(0);' onclick='writeme([&#39;q&#39;,&#39;Q&#39;,&#39;&#39;])' alt='q'><area shape='rect' coords='93.3,45,130.6,84' href='javascript:void(0);' onclick='writeme([&#39;w&#39;,&#39;W&#39;,&#39;&#39;])' alt='w'><area shape='rect' coords='130.7,45,168.3,84' href='javascript:void(0);' onclick='writeme([&#39;e&#39;,&#39;E&#39;,&#39;&#39;])' alt='e'><area shape='rect' coords='168.4,45,205.4,84' href='javascript:void(0);' onclick='writeme([&#39;r&#39;,&#39;R&#39;,&#39;&#39;])' alt='r'><area shape='rect' coords='205.5,45,243,84' href='javascript:void(0);' onclick='writeme([&#39;t&#39;,&#39;T&#39;,&#39;&#39;])' alt='t'><area shape='rect' coords='243.1,45,280.6,84' href='javascript:void(0);' onclick='writeme([&#39;y&#39;,&#39;Y&#39;,&#39;&#39;])' alt='y'><area shape='rect' coords='280.7,45,318.2,84' href='javascript:void(0);' onclick='writeme([&#39;u&#39;,&#39;U&#39;,&#39;&#39;])' alt='u'><area shape='rect' coords='318.3,45,355.8,84' href='javascript:void(0);' onclick='writeme([&#39;i&#39;,&#39;I&#39;,&#39;&#39;])' alt='i'><area shape='rect' coords='355.9,45,393.4,84' href='javascript:void(0);' onclick='writeme([&#39;o&#39;,&#39;O&#39;,&#39;&#39;])' alt='o'><area shape='rect' coords='393.5,45,431,84' href='javascript:void(0);' onclick='writeme([&#39;p&#39;,&#39;P&#39;,&#39;&#39;])' alt='p'><area shape='rect' coords='431.1,45,468.6,84' href='javascript:void(0);' onclick='writeme([&#39;\[&#39;,&#39;{&#39;,&#39;&#39;])' alt='\['><area shape='rect' coords='468.7,45,506.2,84' href='javascript:void(0);' onclick='writeme([&#39;\]&#39;,&#39;}&#39;,&#39;&#39;])' alt='\]'><area shape='poly' coords='506.3,45,565,45,565,130,488,130,488,85,506.3,85' href='javascript:void(0);' onclick='writeme([&#39;\\n&#39;,&#39;\\n&#39;,&#39;\\n&#39;])' alt='\⏎'><area shape='rect' coords='0,85,77,130' href='javascript:void(0);' onclick='writeme([&#39;⇧&#39;,&#39;⇧&#39;,&#39;⇧&#39;])' alt='CAP'><area shape='rect' coords='77.1,85,113.5,130' href='javascript:void(0);' onclick='writeme([&#39;a&#39;,&#39;A&#39;,&#39;&#39;])' alt='a'><area shape='rect' coords='113.6,85,151.1,130' href='javascript:void(0);' onclick='writeme([&#39;s&#39;,&#39;S&#39;,&#39;&#39;])' alt='s'><area shape='rect' coords='151.2,85,189.7,130' href='javascript:void(0);' onclick='writeme([&#39;d&#39;,&#39;D&#39;,&#39;&#39;])' alt='d'><area shape='rect' coords='189.8,85,226.8,130' href='javascript:void(0);' onclick='writeme([&#39;f&#39;,&#39;F&#39;,&#39;&#39;])' alt='f'><area shape='rect' coords='226.9,85,263.9,130' href='javascript:void(0);' onclick='writeme([&#39;g&#39;,&#39;G&#39;,&#39;&#39;])' alt='g'><area shape='rect' coords='264,85,301.5,130' href='javascript:void(0);' onclick='writeme([&#39;h&#39;,&#39;H&#39;,&#39;&#39;])' alt='h'><area shape='rect' coords='301.6,85,338.1,130' href='javascript:void(0);' onclick='writeme([&#39;j&#39;,&#39;J&#39;,&#39;&#39;])' alt='j'><area shape='rect' coords='338.2,85,375.7,130' href='javascript:void(0);' onclick='writeme([&#39;k&#39;,&#39;K&#39;,&#39;&#39;])' alt='k'><area shape='rect' coords='375.8,85,413.3,130' href='javascript:void(0);' onclick='writeme([&#39;l&#39;,&#39;L&#39;,&#39;&#39;])' alt='l'><area shape='rect' coords='413.4,85,450.9,130' href='javascript:void(0);' onclick='writeme([&#39;\&#59;&#39;,&#39;\&#58;&#39;,&#39;&#39;])' alt='\;'><area shape='rect' coords='451,85,488.5,130' href='javascript:void(0);' onclick='writeme([&#39;&#92;&#39;&#39;,&#39;&#92;&#34;&#39;,&#39;&#39;])' alt='\&#39;'><area shape='rect' coords='0,131,93.2,172' href='javascript:void(0);' onclick='writeme([&#39;⇧&#39;,&#39;⇧&#39;,&#39;⇧&#39;])' alt='⇧'><area shape='rect' coords='93.3,131,130.6,172' href='javascript:void(0);' onclick='writeme([&#39;z&#39;,&#39;Z&#39;,&#39;&#39;])' alt='z'><area shape='rect' coords='130.7,131,168.3,172' href='javascript:void(0);' onclick='writeme([&#39;x&#39;,&#39;X&#39;,&#39;&#39;])' alt='x'><area shape='rect' coords='168.4,131,205.4,172' href='javascript:void(0);' onclick='writeme([&#39;c&#39;,&#39;C&#39;,&#39;&#39;])' alt='c'><area shape='rect' coords='205.5,131,243,172' href='javascript:void(0);' onclick='writeme([&#39;v&#39;,&#39;V&#39;,&#39;&#39;])' alt='v'><area shape='rect' coords='243.1,131,280.6,172' href='javascript:void(0);' onclick='writeme([&#39;b&#39;,&#39;B&#39;,&#39;&#39;])' alt='b'><area shape='rect' coords='280.7,131,318.2,172' href='javascript:void(0);' onclick='writeme([&#39;n&#39;,&#39;N&#39;,&#39;&#39;])' alt='n'><area shape='rect' coords='318.3,131,355.8,172' href='javascript:void(0);' onclick='writeme([&#39;m&#39;,&#39;M&#39;,&#39;&#39;])' alt='m'><area shape='rect' coords='355.9,131,393.9,172' href='javascript:void(0);' onclick='writeme([&#39;\,&#39;,&#39;\&#60;&#39;,&#39;&#39;])' alt='\,'><area shape='rect' coords='394,131,431.5,172' href='javascript:void(0);' onclick='writeme([&#39;\.&#39;,&#39;\&#62;&#39;,&#39;&#39;])' alt='\.'><area shape='rect' coords='431.6,131,469.6,172' href='javascript:void(0);' onclick='writeme([&#39;\/&#39;,&#39;\?&#39;,&#39;&#39;])' alt='\/'><area shape='rect' coords='469.7,131,565,172' href='javascript:void(0);' onclick='writeme([&#39;⇧&#39;,&#39;⇧&#39;,&#39;⇧&#39;])' alt='⇧'><area shape='rect' coords='0,172,55.7,211' href='javascript:void(0);' onclick='writeme([&#39;⇩&#39;,&#39;⇩&#39;,&#39;⇩&#39;])' alt='CTRL'><area shape='rect' coords='102.5,172,156.3,211' href='javascript:void(0);' onclick='writeme([&#39;⇩&#39;,&#39;⇩&#39;,&#39;⇩&#39;])' alt='ALT'><area shape='rect' coords='156.4,172,407.3,211' href='javascript:void(0);' onclick='writeme([&#39; &#39;,&#39; &#39;,&#39; &#39;])' alt='SPACE'><area shape='rect' coords='407.4,172,460.6,211' href='javascript:void(0);' onclick='writeme([&#39;⇩&#39;,&#39;⇩&#39;,&#39;⇩&#39;])' alt='ALT'><area shape='rect' coords='506.3,172,565,211' href='javascript:void(0);' onclick='writeme([&#39;⇩&#39;,&#39;⇩&#39;,&#39;⇩&#39;])' alt='CTRL'></map></div>";
-//document.getElementById("wikiEditor-section-interWikiLinker").innerHTML= document.getElementById("wikiEditor-section-interWikiLinker").innerHTML  + "<br/>" + content;
-document.getElementById("wpSummaryLabel").innerHTML= content + "<br/>" + document.getElementById("wpSummaryLabel").innerHTML;
 
-
-document.getElementById('wpTextbox1').onfocus=function (){livebox='wpTextbox1';}
-document.getElementById('searchInput').onfocus=function (){livebox='searchInput';}
-
+//To append the keyboard
+function showkeyboard()
+{
+var content="<div id='keyboard' style='align:right;display:none;position:fixed;bottom:10px;right:5px;float:right;'><div id='mydivheader' style='width:550px;'><b>⛶</b><span id='kbheader'></span><a style='float:right;' href='https://github.com/neechalkaran/On-screen-keyboard/'>?</a></div><img usemap='#tamil99map' width='565' height='211' border='0' src='Tamil_Keyboard_Tamil_99.jpg'   /><map name='tamil99map'  ><area shape='rect' coords='0,0,39,41' href='javascript:void(0);' onclick='writeme([&#39;`&#39;,&#39;~&#39;,&#39;&#39;])' alt='`'><area shape='rect' coords='40,0,77.6,41' href='javascript:void(0);' onclick='writeme([&#39;1&#39;,&#39;!&#39;,&#39;&#39;])' alt='1'><area shape='rect' coords='77.6,0,115.1,41' href='javascript:void(0);' onclick='writeme([&#39;2&#39;,&#39;@&#39;,&#39;&#39;])' alt='2'><area shape='rect' coords='115.2,0,152.7,41' href='javascript:void(0);' onclick='writeme([&#39;3&#39;,&#39;#&#39;,&#39;&#39;])' alt='3'><area shape='rect' coords='152.8,0,190.3,41' href='javascript:void(0);' onclick='writeme([&#39;4&#39;,&#39;$&#39;,&#39;&#39;])' alt='4'><area shape='rect' coords='190.4,0,227.9,41' href='javascript:void(0);' onclick='writeme([&#39;5&#39;,&#39;\%&#39;,&#39;&#39;])' alt='5'><area shape='rect' coords='228,0,265.5,41' href='javascript:void(0);' onclick='writeme([&#39;6&#39;,&#39;\^&#39;,&#39;&#39;])' alt='6'><area shape='rect' coords='265.6,0,303.1,41' href='javascript:void(0);' onclick='writeme([&#39;7&#39;,&#39;\&&#39;,&#39;&#39;])' alt='7'><area shape='rect' coords='303.2,0,340.7,41' href='javascript:void(0);' onclick='writeme([&#39;8&#39;,&#39;\*&#39;,&#39;&#39;])' alt='8'><area shape='rect' coords='340.8,0,378.1,41' href='javascript:void(0);' onclick='writeme([&#39;9&#39;,&#39;\(&#39;,&#39;&#39;])' alt='9'><area shape='rect' coords='378.2,0,414.5,41' href='javascript:void(0);' onclick='writeme([&#39;0&#39;,&#39;\)&#39;,&#39;&#39;])' alt='0'><area shape='rect' coords='414.6,0,452.9,41' href='javascript:void(0);' onclick='writeme([&#39;-&#39;,&#39;\_&#39;,&#39;&#39;])' alt='-'><area shape='rect' coords='453,0,490.3,41' href='javascript:void(0);' onclick='writeme([&#39;=&#39;,&#39;\+&#39;,&#39;&#39;])' alt='='><area shape='rect' coords='490.4,0,527.7,41' href='javascript:void(0);' onclick='writeme([&#39;&#92;&#92;&#39;,&#39;&#92;&#124;&#39;,&#39;&#39;])' alt='\'><area shape='rect' coords='527.8,0,565,41' href='javascript:void(0);' onclick='writeme([&#39;←&#39;,&#39;←&#39;,&#39;←&#39;])' alt='←'><area shape='rect' coords='0,45,55.7,84' href='javascript:void(0);' onclick='writeme([&#39;\t&#39;,&#39;\t&#39;,&#39;\t&#39;])' alt='→'><area shape='rect' coords='55.8,45,93.2,84' href='javascript:void(0);' onclick='writeme([&#39;q&#39;,&#39;Q&#39;,&#39;&#39;])' alt='q'><area shape='rect' coords='93.3,45,130.6,84' href='javascript:void(0);' onclick='writeme([&#39;w&#39;,&#39;W&#39;,&#39;&#39;])' alt='w'><area shape='rect' coords='130.7,45,168.3,84' href='javascript:void(0);' onclick='writeme([&#39;e&#39;,&#39;E&#39;,&#39;&#39;])' alt='e'><area shape='rect' coords='168.4,45,205.4,84' href='javascript:void(0);' onclick='writeme([&#39;r&#39;,&#39;R&#39;,&#39;&#39;])' alt='r'><area shape='rect' coords='205.5,45,243,84' href='javascript:void(0);' onclick='writeme([&#39;t&#39;,&#39;T&#39;,&#39;&#39;])' alt='t'><area shape='rect' coords='243.1,45,280.6,84' href='javascript:void(0);' onclick='writeme([&#39;y&#39;,&#39;Y&#39;,&#39;&#39;])' alt='y'><area shape='rect' coords='280.7,45,318.2,84' href='javascript:void(0);' onclick='writeme([&#39;u&#39;,&#39;U&#39;,&#39;&#39;])' alt='u'><area shape='rect' coords='318.3,45,355.8,84' href='javascript:void(0);' onclick='writeme([&#39;i&#39;,&#39;I&#39;,&#39;&#39;])' alt='i'><area shape='rect' coords='355.9,45,393.4,84' href='javascript:void(0);' onclick='writeme([&#39;o&#39;,&#39;O&#39;,&#39;&#39;])' alt='o'><area shape='rect' coords='393.5,45,431,84' href='javascript:void(0);' onclick='writeme([&#39;p&#39;,&#39;P&#39;,&#39;&#39;])' alt='p'><area shape='rect' coords='431.1,45,468.6,84' href='javascript:void(0);' onclick='writeme([&#39;\[&#39;,&#39;{&#39;,&#39;&#39;])' alt='\['><area shape='rect' coords='468.7,45,506.2,84' href='javascript:void(0);' onclick='writeme([&#39;\]&#39;,&#39;}&#39;,&#39;&#39;])' alt='\]'><area shape='poly' coords='506.3,45,565,45,565,130,488,130,488,85,506.3,85' href='javascript:void(0);' onclick='writeme([&#39;\\n&#39;,&#39;\\n&#39;,&#39;\\n&#39;])' alt='\⏎'><area shape='rect' coords='0,85,77,130' href='javascript:void(0);' onclick='writeme([&#39;⇧&#39;,&#39;⇧&#39;,&#39;⇧&#39;])' alt='CAP'><area shape='rect' coords='77.1,85,113.5,130' href='javascript:void(0);' onclick='writeme([&#39;a&#39;,&#39;A&#39;,&#39;&#39;])' alt='a'><area shape='rect' coords='113.6,85,151.1,130' href='javascript:void(0);' onclick='writeme([&#39;s&#39;,&#39;S&#39;,&#39;&#39;])' alt='s'><area shape='rect' coords='151.2,85,189.7,130' href='javascript:void(0);' onclick='writeme([&#39;d&#39;,&#39;D&#39;,&#39;&#39;])' alt='d'><area shape='rect' coords='189.8,85,226.8,130' href='javascript:void(0);' onclick='writeme([&#39;f&#39;,&#39;F&#39;,&#39;&#39;])' alt='f'><area shape='rect' coords='226.9,85,263.9,130' href='javascript:void(0);' onclick='writeme([&#39;g&#39;,&#39;G&#39;,&#39;&#39;])' alt='g'><area shape='rect' coords='264,85,301.5,130' href='javascript:void(0);' onclick='writeme([&#39;h&#39;,&#39;H&#39;,&#39;&#39;])' alt='h'><area shape='rect' coords='301.6,85,338.1,130' href='javascript:void(0);' onclick='writeme([&#39;j&#39;,&#39;J&#39;,&#39;&#39;])' alt='j'><area shape='rect' coords='338.2,85,375.7,130' href='javascript:void(0);' onclick='writeme([&#39;k&#39;,&#39;K&#39;,&#39;&#39;])' alt='k'><area shape='rect' coords='375.8,85,413.3,130' href='javascript:void(0);' onclick='writeme([&#39;l&#39;,&#39;L&#39;,&#39;&#39;])' alt='l'><area shape='rect' coords='413.4,85,450.9,130' href='javascript:void(0);' onclick='writeme([&#39;\&#59;&#39;,&#39;\&#58;&#39;,&#39;&#39;])' alt='\;'><area shape='rect' coords='451,85,488.5,130' href='javascript:void(0);' onclick='writeme([&#39;&#92;&#39;&#39;,&#39;&#92;&#34;&#39;,&#39;&#39;])' alt='\&#39;'><area shape='rect' coords='0,131,93.2,172' href='javascript:void(0);' onclick='writeme([&#39;⇧&#39;,&#39;⇧&#39;,&#39;⇧&#39;])' alt='⇧'><area shape='rect' coords='93.3,131,130.6,172' href='javascript:void(0);' onclick='writeme([&#39;z&#39;,&#39;Z&#39;,&#39;&#39;])' alt='z'><area shape='rect' coords='130.7,131,168.3,172' href='javascript:void(0);' onclick='writeme([&#39;x&#39;,&#39;X&#39;,&#39;&#39;])' alt='x'><area shape='rect' coords='168.4,131,205.4,172' href='javascript:void(0);' onclick='writeme([&#39;c&#39;,&#39;C&#39;,&#39;&#39;])' alt='c'><area shape='rect' coords='205.5,131,243,172' href='javascript:void(0);' onclick='writeme([&#39;v&#39;,&#39;V&#39;,&#39;&#39;])' alt='v'><area shape='rect' coords='243.1,131,280.6,172' href='javascript:void(0);' onclick='writeme([&#39;b&#39;,&#39;B&#39;,&#39;&#39;])' alt='b'><area shape='rect' coords='280.7,131,318.2,172' href='javascript:void(0);' onclick='writeme([&#39;n&#39;,&#39;N&#39;,&#39;&#39;])' alt='n'><area shape='rect' coords='318.3,131,355.8,172' href='javascript:void(0);' onclick='writeme([&#39;m&#39;,&#39;M&#39;,&#39;&#39;])' alt='m'><area shape='rect' coords='355.9,131,393.9,172' href='javascript:void(0);' onclick='writeme([&#39;\,&#39;,&#39;\&#60;&#39;,&#39;&#39;])' alt='\,'><area shape='rect' coords='394,131,431.5,172' href='javascript:void(0);' onclick='writeme([&#39;\.&#39;,&#39;\&#62;&#39;,&#39;&#39;])' alt='\.'><area shape='rect' coords='431.6,131,469.6,172' href='javascript:void(0);' onclick='writeme([&#39;\/&#39;,&#39;\?&#39;,&#39;&#39;])' alt='\/'><area shape='rect' coords='469.7,131,565,172' href='javascript:void(0);' onclick='writeme([&#39;⇧&#39;,&#39;⇧&#39;,&#39;⇧&#39;])' alt='⇧'><area shape='rect' coords='0,172,55.7,211' href='javascript:void(0);' onclick='writeme([&#39;⇩&#39;,&#39;⇩&#39;,&#39;⇩&#39;])' alt='CTRL'><area shape='rect' coords='102.5,172,156.3,211' href='javascript:void(0);' onclick='writeme([&#39;⇩&#39;,&#39;⇩&#39;,&#39;⇩&#39;])' alt='ALT'><area shape='rect' coords='156.4,172,407.3,211' href='javascript:void(0);' onclick='writeme([&#39; &#39;,&#39; &#39;,&#39; &#39;])' alt='SPACE'><area shape='rect' coords='407.4,172,460.6,211' href='javascript:void(0);' onclick='writeme([&#39;⇩&#39;,&#39;⇩&#39;,&#39;⇩&#39;])' alt='ALT'><area shape='rect' coords='506.3,172,565,211' href='javascript:void(0);' onclick='writeme([&#39;⇩&#39;,&#39;⇩&#39;,&#39;⇩&#39;])' alt='CTRL'></map></div>";
+var node = document.createElement("div");
+node.innerHTML = content;
+document.body.appendChild(node);
+}
 
 $("textarea").keypress(function(e){if(tran=="true"){writeme(String.fromCharCode(e.which));return false;}else{return true;}});
+$("input").keypress(function(e){if(tran=="true"){writeme(String.fromCharCode(e.which));return false;}else{return true;}});
 
+dragElement(document.getElementById("keyboard"));
 
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+  
 
 function togglemap(virupam)
 {
 
 if(virupam == 'phonetic')
-{phonetic="true"; tamil99="false";document.getElementById('kbheader').innerHTML='எழுத்துப்பெயர்ப்பு';}
-if(virupam == 'tamil99')
-{phonetic="false"; tamil99="true";document.getElementById('kbheader').innerHTML='தமிழ்99';}
-
-if(document.getElementById("keyboard").style.display=="block"){tran="false";
+{phonetic="true"; tamil99="false";tran="true";
+ if($('#kbheader'))$('#kbheader').html('ஒலிபெயர்ப்பு');
+//document.getElementById("keyboard").style.display="block";
+$('#keyboard').show();}
+else if(virupam == 'tamil99')
+{phonetic="false"; tamil99="true";tran="true";
+ if($('#kbheader'))$('#kbheader').html('தமிழ்99');
+$('#keyboard').show();}
+else{phonetic="false"; tamil99="false";$('#keyboard').hide();tran="false";}
+//if(showkeyboard==false){$('#keyboard').hide();}
+/*if(document.getElementById("keyboard").style.display=="block"){tran="false";
 document.getElementById("keyboard").style.display="none";
 return;}
 if(document.getElementById("keyboard").style.display=="none"){
 tran="true";
 document.getElementById("keyboard").style.display="block";
-return;}
+return;}*/
 }
 function writeme(a)
 {
@@ -229,7 +263,7 @@ function insertAtCaret(areaId,text) {
 }
 function tphonetic(chr) {
 
-var pmap="a,அ,A,அஅ,i,இ,I,இஇ,u,உ,U,உஉ,e,எ,E,எஎ,o,ஒ,O,ஒஒ,k,க்,g,க்,z,ழ்,w,ந்,t,ட்,s,ச்,c,ச்,j,ஜ்,h,ஹ்,S,ஸ்,r,ர்,R,ற்,d,ட்,p,ப்,b,ப்,m,ம்,y,ய்,n,ன்,N,ண்,l,ல்,L,ள்,v,வ்,q,ஃ".split(",");
+var pmap="a,அ,A,அஅ,i,இ,I,இஇ,u,உ,U,உஉ,e,எ,E,எஎ,o,ஒ,O,ஒஒ,k,க்,g,க்,z,ழ்,w,ந்,t,ட்,s,ச்,c,ச்,j,ஜ்,h,ஹ்,S,ஸ்,r,ர்,R,ற்,d,ட்,D,ட்,p,ப்,b,ப்,m,ம்,y,ய்,n,ன்,N,ண்,l,ல்,L,ள்,v,வ்,q,ஃ,f,ஃப்".split(",");
 for (i=0;i<pmap.length-1;i++)
 {
  chr=chr.replace(RegExp(pmap[i],"g"),pmap[i+1]);
@@ -240,7 +274,7 @@ return chr;
 
 function ttamil99(chr) {
 chr = chr.replace(/\[/gi,"ச");
-var tmap ="a,அ,q,ஆ,s,இ,w,ஈ,d,உ,e,ஊ,g,எ,t,ஏ,r,ஐ,c,ஒ,x,ஓ,z,ஔ,F,ஃ ,h,க,b,ங,E,ஜ,\],ஞ,o,ட,p,ண,l,த,;,ந,i,ன,j,ப,k,ம,\',ய,m,ர,u,ற,n,ல,y,ள,\/,ழ,v,வ,U,ஶ,W,ஷ,Q,ஸ,R,ஹ,f,்,L,\:,O,\[,P,\],M,\/,L,௱,N,ௐ,T,க்ஷ,Y,ஸ்ரீ,A,௹,S,௺,D,௸,Z,௳,X,௴,C,௵,V,௶,B,௷".split(",");
+var tmap ="a,அ,q,ஆ,s,இ,w,ஈ,d,உ,e,ஊ,g,எ,t,ஏ,r,ஐ,c,ஒ,x,ஓ,z,ஔ,F,ஃ ,h,க,b,ங,E,ஜ,\],ஞ,o,ட,p,ண,l,த,;,ந,i,ன,j,ப,k,ம,\',ய,m,ர,u,ற,n,ல,y,ள,\/,ழ,v,வ,U,ஶ,W,ஷ,Q,ஸ,R,ஹ,f,்,L,\:,O,\[,P,\],M,\/,L,௱,N,ௐ,T,க்ஷ,Y,ஸ்ரீ,A,௹,S,௺,D,௸,Z,௳,X,௴,C,௵,V,௶,B,௷".split(",");
 
 for (i=0;i<tmap.length-1;i++)
 {
@@ -284,9 +318,3 @@ if((c.substr(c.length - 1)=="ன")&&(b=="ற")&&(c.substr(c.length - 2,1)!="்"
 }
 return d;
 }
-
-
-</script><br />
-<br />
-<br />
-</body></html>

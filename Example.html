@@ -1,0 +1,44 @@
+<!doctype html><br />
+<html>
+  <head>
+<meta charset="utf-8">
+      <style>
+body {
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+input['text'] {
+	width: 500px;
+	margin-bottom: 20px;
+}
+
+textarea {
+	width: 500px;
+	height: 300px;
+	margin-bottom: 20px;
+}
+  </style>
+</head>
+<body>
+<div id="Menu_content" align="center">
+   On Screen keyboard Demo<br/><br />
+<input type="radio" name="layout" value="tamil99" onclick="togglemap('')" checked> Own Keyboard
+<input type="radio" name="layout" value="phonetic" onclick="togglemap('phonetic')"> Phonetic
+<input type="radio" name="layout" value="tamil99" onclick="togglemap('tamil99')"> Tamil 99
+</div>
+<input type="text" id="searchInput" size="50" ></input><br />
+<textarea id="wpTextbox1" rows="5" cols="30" ></textarea><br />
+<br />
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><br />
+<script type="text/javascript" src="on-screen-keyboard.js"></script>
+<script type="text/javascript">
+livebox='searchInput';//default box
+$('#searchInput').focus(function (){livebox='searchInput';})
+$('#wpTextbox1').focus(function (){livebox='wpTextbox1';})
+//showkeyboard();
+</script>
+
+</body></html>
